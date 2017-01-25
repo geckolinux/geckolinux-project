@@ -1,0 +1,13 @@
+#!/bin/bash
+
+## Remove live session "linux" user account and /home dir...
+userdel linux
+rm -Rf /home/linux
+
+## Remove both live installers from the installed system...
+# also gets rid of Calamares:
+zypper --non-interactive remove libkpmcore4
+zypper --non-interactive remove yast2-live-installer
+# remove Calamares dependencies (in two steps to get them all) DON'T REMOVE THESE ON PLASMA SYSTEMS:
+zypper --non-interactive remove libKF5Parts5
+zypper --non-interactive remove libQtQuick5
